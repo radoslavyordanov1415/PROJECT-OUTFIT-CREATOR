@@ -19,7 +19,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Regitser />} />
         <Route path='/logout' element={<Logout />} />
-
       </Routes>
     </Router>
   )
