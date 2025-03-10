@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './Register.css'
 
 export default function Regitser() {
     const [username, setUsername] = useState('');
@@ -9,7 +9,6 @@ export default function Regitser() {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-
         if (password !== confirmPassword) {
             return alert('Passwords do not match')
         };
@@ -32,6 +31,7 @@ export default function Regitser() {
 
             if (response.ok) {
                 alert('Registration successful!');
+
             } else {
                 alert(data.message);
             }
@@ -42,52 +42,58 @@ export default function Regitser() {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
+        <div className="form-container">
+            <h2>Sign Up</h2>
             <form onSubmit={handleRegister}>
-                <div>
-                    <label htmlFor="username">Username:</label>
+                <div className="input-field">
                     <input
                         type="text"
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
+                        placeholder=" "
                     />
+                    <label htmlFor="username">Full Name</label>
                 </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
+                <div className="input-field">
                     <input
-                        type="text"
+                        type="email"
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        placeholder=" "
                     />
+                    <label htmlFor="email">Email Address</label>
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className="input-field">
                     <input
                         type="password"
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        placeholder=" "
                     />
+                    <label htmlFor="password">Password</label>
                 </div>
-                <div>
-                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                <div className="input-field">
                     <input
                         type="password"
-                        id="confirmPassword"
+                        id="confirm-password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
+                        placeholder=" "
                     />
+                    <label htmlFor="confirm-password">Confirm Password</label>
                 </div>
-                <button type="submit">Register</button>
-
+                <button type="submit" className="btn-submit">Sign Up</button>
             </form>
+            <div className="text-center">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
         </div>
-    )
+    );
 }
