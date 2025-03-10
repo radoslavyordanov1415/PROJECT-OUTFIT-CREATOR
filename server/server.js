@@ -4,7 +4,7 @@ dotenv.config()
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
-
+import authRoutes from "./routes/authRoutes.js"
 
 const app = express();
 
@@ -17,7 +17,9 @@ app.use(cors({
     credentials: true,
 }));
 
-//TODO: App to use Routes
+//* Routes configuration
+app.use('/auth', authRoutes)
+
 
 //* Connect to MongoDB
 const connectDB = async () => {
@@ -31,7 +33,7 @@ const connectDB = async () => {
     }
 };
 
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, async () => {
     await connectDB();
