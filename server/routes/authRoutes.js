@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
-            maxAge: 3600000
+            maxAge: 3600000,
         });
 
         res.status(201).json({ message: 'User registered successfully.' })
@@ -47,6 +47,15 @@ router.post('/register', async (req, res) => {
         res.status(500).json({ err: err.message });
     };
 
+});
+
+//* Login route
+
+
+//* Logout route
+router.post('/logout', (req, res) => {
+    res.cookie('token', '', { maxAge: 0 });
+    res.status(200).json({ message: 'User logged out successfully.' });
 });
 
 
